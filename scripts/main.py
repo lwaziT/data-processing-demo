@@ -18,7 +18,7 @@ def tokenize(para):
     """ Method to split the text into tokens."""
     tokenizer = nltk.data.load('tokenizers/punkt/PY3/english.pickle')
     para_to_sentence = tokenizer.tokenize(para) # Accepts paragraph and tokenizes to sentences.
-    tokenizer = TreebankWordTokenizer()
+    tokenizer = TreebankWordTokenizer() # Creating an instance of TreebankWordTokenizer() to further segment sentences to words.
     sentence_list = []
     word_list = []
     for sentence in para_to_sentence:
@@ -29,7 +29,7 @@ def tokenize(para):
         for word in sent_to_word:
             word_list.append(word) # Appends individual words to list.
 
-    return word_list
+    return sentence_list, word_list # Returns a list of tokens.
 
 def stop_words_removal(list_of_words):
     """ Method to remove common stop words from a list of words. """
@@ -57,7 +57,7 @@ def lemmatizing(para):
 
 if __name__ == '__main__':
 
-    tokenized_para = tokenize(content)
+    _,tokenized_para = tokenize(content)
     logging.info(f"tokenized_text: {tokenized_para}")
 
     stopworded_para = stop_words_removal(tokenized_para)
