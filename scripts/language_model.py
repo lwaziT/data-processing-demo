@@ -3,32 +3,17 @@ from collections import defaultdict, Counter
 
 nltk.download("punkt")
 
-corpus = """
-When data are noisy, it’s our job as data scientists to listen 
-for signals so we can relay it to someone who can decide how to 
-act. To amp up how loudly hidden signals speak over the noise 
-of big and/or volatile data, we can deploy smoothing algorithms, 
-which though traditionally used in time-series analyses, also 
-come into their own when applied on other sequential data. 
-Smoothing algorithms are either global or local because they take 
-data and filter out noise across the entire, global series, or 
-over a smaller, local series by summarizing a local or global 
-domain of Y, resulting in an estimation of the underlying data 
-called a smooth. The specific smoother you use depends on your 
-analysis’ goal and data quirks, because as we’ll see below, 
-there are trade-offs to consider. Below are a few options, along 
-with their intuition, limitations, and formula so you can rapidly 
-evaluate when and why to use one over the other.
-"""
+with open("C:/Users/tobos/OneDrive/Desktop/UNISA 2025/COS4861_NLP/Assignments/Assignment 2/Data preprocessing pipeline/data/Corpus.txt", "r") as file:
+    content = file.read()
 
 # 1. TOKENIZATION
 
 # Word-level tokenization (lowercased, keep only words)
-words = nltk.word_tokenize(corpus.lower())
+words = nltk.word_tokenize(content.lower())
 words = [w for w in words if w.isalpha()]
 
 # Character-level tokenization
-chars = list(corpus.lower().replace(" ", "_"))  # use '_' for spaces
+chars = list(content.lower().replace(" ", "_"))  # use '_' for spaces
 
 # 2. FUNCTION TO BUILD N-GRAMS
 def build_ngrams(tokens, n=2):

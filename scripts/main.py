@@ -11,9 +11,8 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 # nltk.download('stopwords')
 # nltk.download('wordnet')
 
-text = ("Welcome to Natural Language Processing. It is one of "
-        "the most exciting research areas as of today."
-        " We will see how Python can be used to work with text files.")
+with open("C:/Users/tobos/OneDrive/Desktop/UNISA 2025/COS4861_NLP/Assignments/Assignment 2/Data preprocessing pipeline/data/Corpus.txt", "r") as file:
+    content = file.read()
 
 def tokenize(para):
     """ Method to split the text into tokens."""
@@ -58,7 +57,7 @@ def lemmatizing(para):
 
 if __name__ == '__main__':
 
-    tokenized_para = tokenize(text)
+    tokenized_para = tokenize(content)
     logging.info(f"tokenized_text: {tokenized_para}")
 
     stopworded_para = stop_words_removal(tokenized_para)
