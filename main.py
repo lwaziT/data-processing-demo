@@ -57,6 +57,7 @@ def lemmatizing(para):
     return lemmatized_list
 
 if __name__ == '__main__':
+
     tokenized_para = tokenize(text)
     logging.info(f"tokenized_text: {tokenized_para}")
 
@@ -66,4 +67,6 @@ if __name__ == '__main__':
     stemmitized_para = stemming(stopworded_para)
     logging.info(f"stemmitized_text: {stemmitized_para}")
 
-    logging.info(f"Lemmitized_text: {lemmatizing(stopworded_para)}")
+    logging.info(f"Lemmitized_text: {lemmatizing(stemmitized_para)}")
+
+
